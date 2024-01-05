@@ -4,10 +4,16 @@ import numpy as np
 import csv
 import os
 from datetime import datetime
+import pafy
+
+url = "https://youtu.be/A4_TFHzqAAg?si=DZfiqJ3ZKjkJQ1Aj"
+you_video = pafy.new(url)
+
+best = you_video.getbest(preftype="mp4")
  
-video_capture = cv2.VideoCapture(0)
+video = cv2.VideoCapture(best.url)
  
-karan_image = face_recognition.load_image_file("photos/karan.JPEG")
+karan_image = face_recognition.load_image_file("photos/same.jpg")
 karan_encoding = face_recognition.face_encodings(karan_image)[0]
  
 devang_tata_image = face_recognition.load_image_file("photos/devang.JPEG")
